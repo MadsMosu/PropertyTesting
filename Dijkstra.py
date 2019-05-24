@@ -10,12 +10,18 @@ def make_edge(start, end, cost=1):
 
 
 class Graph:
-    def __init__(self, edges):
+    def __init__(self, edges, both_ends=False):
         wrong_edges = [i for i in edges if len(i) not in [2, 3]]
         if wrong_edges:
             raise ValueError('Wrong edges data: {}'.format(wrong_edges))
 
         self.edges = [make_edge(*edge) for edge in edges]
+        if both_ends:
+            for edge in edges:
+                edgeList = list(edge)
+                edgeList[0], edgeList[1] = edgeList[1], edgeList[0]
+                reverseEdge = tuple(edgeList)
+                self.edges.append(make_edge(*reverseEdge))
 
     @property
     def vertices(self):
@@ -84,7 +90,3 @@ class Graph:
             path.insert(0,current_vertex)
         return path
 
-
-graph = Graph([('a','b',0.3),('b','c',0.9),('a','c',0.5),('c','d',1.2),('c','e',1.6),('b','e',0.7)])
-
-print(graph.dijkstra("a", "e"))

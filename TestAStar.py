@@ -35,14 +35,14 @@ def test_astar_Digraph():
 
     assert nx.astar_path_length(graph,'a','e') > nx.astar_path_length(graph2,'a','e')
 
-# def test_astar_MultiDigraph():
-#     graph = nx.MultiDiGraph()
-#     e=[('a','b',0.3),('b','c',0.9),('a','c',0.5),('c','d',1.2),('c','e',1.6),('b','e',0.7),('d','e', 1.3)]
-#     graph.add_weighted_edges_from(e)
-#     assert nx.astar_path_length(graph,'a','e') == 1
+def test_astar_MultiDigraph():
+    graph = nx.MultiDiGraph()
+    e=[('a','b',0.3),('b','c',0.9),('a','c',0.5),('c','d',1.2),('c','e',1.6),('b','e',0.7),('d','e', 1.3)]
+    graph.add_weighted_edges_from(e)
+    assert nx.astar_path_length(graph,'a','e') == 1
 
-# def test_astar_MultiGraph():
-#     graph = nx.MultiGraph()
-#     e=[('a','b',0.3),('b','c',0.9),('a','c',0.5),('c','d',1.2),('c','e',1.6),('b','e',0.7),('d','e', 1.3)]
-#     graph.add_weighted_edges_from(e)
-#     assert nx.astar_path_length(graph,'a','e') == 1
+def test_astar_MultiGraph():
+    graph = nx.MultiGraph()
+    e=[('a','b',0.3),('b','c',0.9),('a','c',0.5),('c','d',1.2),('c','e',1.6),('b','e',0.7),('d','e', 1.3)]
+    graph.add_weighted_edges_from(e)
+    assert nx.astar_path_length(graph,'a','e') == 1
